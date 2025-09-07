@@ -1,0 +1,14 @@
+# Ignore artifacts:
+build
+coverage
+
+# Build / cache
+dist
+node_modules
+
+# Imágenes, binarios, etc.
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
