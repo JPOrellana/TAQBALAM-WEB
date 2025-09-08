@@ -51,13 +51,11 @@ function BankDonationCard({ bankLogo, bankName, holder, accountType, accountNumb
       setCopied(true);
       setTimeout(() => setCopied(false), 1600);
     } catch {
-      // Silencioso si el navegador bloquea el portapapeles
     }
   };
 
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
-      {/* Encabezado: logo + banco + nota */}
       <div className="mb-6 flex items-center gap-4">
         <img
           src={bankLogo}
@@ -70,7 +68,6 @@ function BankDonationCard({ bankLogo, bankName, holder, accountType, accountNumb
         </div>
       </div>
 
-      {/* Datos */}
       <div className="grid gap-4 sm:grid-cols-3">
         <Field label="Titular de la Cuenta - Líder Técnico" value={holder} />
         <Field label="Tipo de cuenta" value={accountType} />
@@ -92,6 +89,54 @@ function BankDonationCard({ bankLogo, bankName, holder, accountType, accountNumb
     </div>
   );
 }
+
+/* ===== Marquee de patrocinadores (loop continuo) ===== */
+function SponsorsMarquee() {
+
+  const logos = [
+    "/images/Patrocinadores/AMEGUA.png",
+    "/images/Patrocinadores/AgregadosSanJosé.png",
+    "/images/Patrocinadores/UNO.png",
+    "/images/Patrocinadores/UVG.png",
+    "/images/Patrocinadores/FibraFina.png",
+    "/images/Patrocinadores/Shell.png",
+    "/images/Patrocinadores/Alfredosb.png",
+  ];
+
+
+  const track = [...logos, ...logos];
+
+  return (
+    <section className="mt-10">
+      <h3 className="mb-4 text-2xl font-bold text-emerald-300">Patrocinadores actuales</h3>
+
+      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 py-6">
+   
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[rgba(10,44,32,0.9)] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[rgba(10,44,32,0.9)] to-transparent" />
+
+
+        <motion.div
+          className="flex items-center whitespace-nowrap gap-12" 
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 5, ease: "linear", repeat: Infinity }}
+          style={{ willChange: "transform" }}
+        >
+          {track.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt={`Logo patrocinador ${i + 1}`}
+              className="h-24 w-auto object-contain transition-transform grayscale hover:grayscale-0"
+              loading="lazy"
+            />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 
 /* ===== Navbar ===== */
 function Navbar() {
@@ -136,7 +181,7 @@ function Hero() {
         backgroundPosition: "center",
       }}
     >
-      {/* overlay oscuro con blur para contraste de texto */}
+
       <div className="absolute inset-0 -z-0 bg-emerald-950/65 backdrop-blur-[2px]" />
       <div className="mx-auto max-w-6xl px-4 py-16 relative z-10">
         <motion.p {...fadeUp} className="text-emerald-300/90 font-bold uppercase tracking-[.2em]">
@@ -340,6 +385,7 @@ function Patrocinio() {
           />
         </div>
       </motion.div>
+      <SponsorsMarquee />
     </section>
   );
 }
