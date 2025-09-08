@@ -49,7 +49,7 @@ function Navbar() {
           <a href="#patrocinio" className="rounded-full px-3 py-1 hover:bg-white/10">Patrocinio</a>
           <a href="#contacto"  className="rounded-full px-3 py-1 hover:bg-white/10">Contacto</a>
         </nav>
-        <a href="https://wa.me/50259880433" target="_blank" rel="noreferrer"
+        <a href="https://wa.me/50239046455" target="_blank" rel="noreferrer"
            className="hidden rounded-full bg-emerald-500 px-4 py-2 font-semibold text-emerald-950 shadow md:inline-flex hover:bg-emerald-400">
           Conversemos
         </a>
@@ -75,11 +75,11 @@ function Hero() {
       <div className="absolute inset-0 -z-0 bg-emerald-950/65 backdrop-blur-[2px]" />
       <div className="mx-auto max-w-6xl px-4 py-16 relative z-10">
         <motion.p {...fadeUp} className="text-emerald-300/90 font-bold uppercase tracking-[.2em]">
-          Vehículos eficientes, Guatemala
+          Vehículos eficientes e Innovación energética
         </motion.p>
         <motion.h1 {...fadeUp} transition={{ ...fadeUp.transition, delay: .05 }}
                    className="mt-2 text-4xl font-black leading-tight sm:text-6xl">
-          Innovación energética
+          Taq'Balam
         </motion.h1>
         <motion.p {...fadeUp} transition={{ ...fadeUp.transition, delay: .1 }}
                   className="mt-3 max-w-2xl text-lg text-slate-200">
@@ -87,7 +87,7 @@ function Hero() {
         </motion.p>
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: .18 }}
                     className="mt-6 flex flex-wrap items-center gap-3">
-          <a href="mailto:jporellana2002@gmail.com?subject=Inter%C3%A9s%20en%20patrocinio%20Taq%20Balam"
+          <a href="mailto:taqbalam1@gmail.com?subject=Inter%C3%A9s%20en%20patrocinio%20Taq%20Balam"
              className="group inline-flex items-center gap-2 rounded-full bg-emerald-500 px-5 py-3 font-semibold text-emerald-950 shadow hover:bg-emerald-400">
             Ser patrocinador <ChevronRight className="transition-transform group-hover:translate-x-0.5" />
           </a>
@@ -255,11 +255,13 @@ function Patrocinio() {
 function Contacto() {
   const iconClass = "h-7 w-7";
   const social = [
-    { href: "#", label: "Instagram", icon: <Instagram className={iconClass} /> },
-    { href: "#", label: "Facebook",  icon: <Facebook  className={iconClass} /> },
-    { href: "mailto:info@taqbalam.gt", label: "Correo", icon: <Mail className={iconClass} /> },
-    { href: "https://wa.me/50259880433", label: "WhatsApp", icon: <MessageCircle className={iconClass} /> },
-    { href: "tel:+50259880433", label: "Teléfono", icon: <PhoneCall className={iconClass} /> },
+    { href: "https://www.instagram.com/taqbalam?igsh=ZmRoNjllMHNoeWIw&utm_source=qr", label: "Instagram", icon: <Instagram className={iconClass}/> },
+   /* { href: "#", label: "Facebook",  icon: <Facebook  className={iconClass} /> }, */
+    { href: "mailto:taqbalam1@gmail.com?subject=Inter%C3%A9s%20en%20patrocinio%20Taq%20Balam", label: "Correo", icon: <Mail className={iconClass} /> },
+    { href: "https://wa.me/50239046455", label: "WhatsApp", icon: <MessageCircle className={iconClass} /> },
+    { href: "tel:+50239046455", label: "Teléfono", icon: <PhoneCall className={iconClass} /> },
+
+    
   ];
   return (
     <section id="contacto" className="mx-auto max-w-6xl px-4 py-16 text-slate-50">
