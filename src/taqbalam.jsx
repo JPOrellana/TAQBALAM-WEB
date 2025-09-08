@@ -108,9 +108,9 @@ function Nosotros() {
         <motion.h2 variants={child} className="text-3xl font-extrabold tracking-tight sm:text-4xl">Nosotros</motion.h2>
         <motion.div variants={child} className="mt-4 grid gap-8 md:grid-cols-2">
           <div className="space-y-4 leading-relaxed text-slate-200">
-            <p><strong>Taq Balam</strong> es un innovador proyecto desarrollado por un grupo de jóvenes universitarios de la Universidad del Valle de Guatemala (UVG)...</p>
-            <p>Fundado en 2010 en el Departamento de Ingeniería Química de la UVG y apoyado por el CPI del Instituto de Investigaciones UVG...</p>
-            <p>Como único equipo centroamericano en clasificar para la regional, competimos junto a EE.UU, México, Canadá y Brasil...</p>
+            <p><strong>Taq Balam</strong> es un proyecto innovador de la Universidad del Valle de Guatemala (UVG), donde un grupo de jóvenes universitarios desarrolla un carro eléctrico como propuesta de investigación y sostenibilidad.</p>
+            <p>Desde 2010, con el respaldo del Instituto de Investigaciones UVG y el departamento de Química, hemos representado a Guatemala en competencias internacionales, siendo el único equipo centroamericano en participar, junto a países como Estados Unidos, México, Canadá y Brasil.</p>
+            <p>Nuestro objetivo es demostrar que la energía limpia y la movilidad eléctrica pueden impulsar un futuro más sostenible para la región.</p>
           </div>
           <div className="grid content-start gap-6">
             <Feature icon={<Rocket />} title="Competitividad" desc="Más de una década impulsando eficiencia energética." />
@@ -122,9 +122,9 @@ function Nosotros() {
 
       <div className="mt-10 grid gap-6 md:grid-cols-2">
         <CardKicker icon={<Sparkles />} title="Misión"
-          desc="Ser un equipo competitivo, organizado y multidisciplinario de alto impacto social..." />
+          desc="Ser un equipo competitivo, organizado y multidisciplinario, que impulse la innovación en movilidad eléctrica y genere un impacto positivo en la sociedad." />
         <CardKicker icon={<Leaf />} title="Visión"
-          desc="Ser un equipo con institucionalidad e impacto social positivo; fabricar prototipos eficientes y modernos..." />
+          desc="Consolidarnos como un equipo referente en Latinoamérica, reconocido por desarrollar prototipos eléctricos eficientes, modernos y sostenibles, que contribuyan al bienestar social y ambiental." />
       </div>
     </section>
   );
@@ -157,8 +157,8 @@ function CardKicker({ icon, title, desc }) {
 function Galeria() {
   const images = [
     "/images/gallery/img1.jpeg",
-    "/images/gallery/img2.jpg",
-    "/images/gallery/img3.jpg",
+    "/images/gallery/img2.jpeg",
+    "/images/gallery/img3.jpeg",
     "/images/gallery/img4.jpg",
     "/images/gallery/img5.jpg",
     "/images/gallery/img6.jpg",
@@ -190,10 +190,11 @@ function Futuro() {
       <motion.h2 {...fadeUp} className="text-3xl font-extrabold tracking-tight sm:text-4xl">A futuro</motion.h2>
       <motion.div {...fadeUp} className="mt-4 grid gap-6 md:grid-cols-2">
         <div className="space-y-4 leading-relaxed text-slate-200">
-          <p>Para la temporada 2025 participaremos con un nuevo y mejorado vehículo...</p>
-          <p>También se proyecta un prototipo urbano con hidrógeno verde...</p>
+          <p>Para la temporada 2025 presentaremos un vehículo renovado y optimizado, incorporando innovaciones en materiales, aerodinámica y tecnologías propias.</p>
+          <p>Además, estamos proyectando el desarrollo de un prototipo urbano con hidrógeno verde, reafirmando nuestro compromiso con la movilidad sostenible.</p>
+          <p>Nuestro siguiente gran reto será en abril de 2026, cuando participaremos en la Shell Eco-Marathon Americas, una de las competencias de eficiencia energética más importantes del mundo, donde buscaremos dejar en alto el nombre de Guatemala y Centroamérica.</p>
         </div>
-        <motion.div {...fadeUp} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+        <motion.div {...fadeUp} className="self-start rounded-2xl border border-white/10 bg-white/5 p-6">
           <ul className="space-y-3 text-slate-200">
             <li className="flex items-center gap-2"><Hammer className="text-emerald-300" /> Materiales ultraligeros y rediseño del monocasco</li>
             <li className="flex items-center gap-2"><Images className="text-emerald-300" /> Aerodinámica y rendimiento mejorados</li>
@@ -209,18 +210,18 @@ function Futuro() {
 /* ===== Patrocinio ===== */
 function Patrocinio() {
   const bullets = [
-    { title: "Impacto social y ambiental", desc: "Apoya soluciones sostenibles para Guatemala." },
-    { title: "Visibilidad internacional", desc: "Proyecto con presencia en la Shell Eco Marathon." },
-    { title: "Desarrollo de talento", desc: "Formación de líderes en ingeniería y sostenibilidad." },
-    { title: "Innovación tecnológica", desc: "Eficiencia energética y materiales ecológicos." },
-    { title: "RSE", desc: "Compromiso con educación y medio ambiente." },
+    { title: "Impacto social y ambiental", desc: "Impulsa soluciones sostenibles que benefician a Guatemala y la región." },
+    { title: "Visibilidad internacional", desc: "Proyección en competencias de alto nivel como la Shell Eco-Marathon Americas." },
+    { title: "Desarrollo de talento", desc: "Apoya la formación de futuros líderes en ingeniería, innovación y sostenibilidad." },
+    { title: "Innovación tecnológica", desc: "Participa en la creación de prototipos con eficiencia energética y materiales ecológicos." },
+    { title: "Responsabilidad social empresarial (RSE)", desc: "Refuerza el compromiso de tu organización con la educación, el medio ambiente y la comunidad." },
   ];
   const formas = ["Patrocinio financiero", "Donación de materiales o equipos", "Asesoría técnica o empresarial", "Difusión y promoción del proyecto"];
   return (
     <section id="patrocinio" className="mx-auto max-w-6xl px-4 py-16 text-slate-50">
       <motion.h2 {...fadeUp} className="text-3xl font-extrabold tracking-tight sm:text-4xl">¡Tú también puedes ser parte!</motion.h2>
-      <motion.p {...fadeUp} className="mt-2 max-w-3xl text-slate-300">Taq Balam está en busca de patrocinadores visionarios...</motion.p>
-      <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-6 grid gap-6 md:grid-cols-2">
+      <motion.p {...fadeUp} className="mt-2 max-w-3xl text-slate-300">En Taq Balam buscamos patrocinadores visionarios que quieran impulsar la innovación, la sostenibilidad y el talento guatemalteco.</motion.p>
+      <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-6 grid gap-6 md:grid-cols-2"> 
         <motion.div variants={child} className="rounded-2xl border border-white/10 bg-white/5 p-6">
           <div className="mb-3 flex items-center gap-2 text-emerald-300"><Handshake /> <span className="font-semibold">¿Por qué patrocinar a Taq Balam?</span></div>
           <ul className="space-y-3 text-slate-200">
@@ -241,7 +242,7 @@ function Patrocinio() {
               </li>
             ))}
           </ul>
-          <a href="mailto:jporellana2002@gmail.com?subject=Inter%C3%A9s%20en%20patrocinio%20Taq%20Balam"
+          <a href="mailto:taqbalam1@gmail.com?subject=Inter%C3%A9s%20en%20patrocinio%20Taq%20Balam"
              className="mt-5 inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-3 font-semibold text-emerald-950 shadow hover:bg-emerald-400">
             Ser patrocinador
           </a>
