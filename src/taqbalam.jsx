@@ -2,7 +2,8 @@ import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Instagram, Facebook, Mail, PhoneCall, MessageCircle, Images,
-  ChevronRight, Handshake, Rocket, Shield, BadgeCheck, Hammer, Leaf, Sparkles
+  ChevronRight, Handshake, Rocket, Shield, BadgeCheck, Hammer, Leaf, Sparkles,
+  Copy, Check
 } from "lucide-react";
 
 /* ===== Colores ===== */
@@ -27,6 +28,70 @@ const child   = { hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0, trans
 
 /* ===== Ruta del fondo del hero (dentro de public/) ===== */
 const HERO_BG = "/images/gallery/prueba.png";
+
+/* ========================== */
+/*   Helpers de Donaciones    */
+/* ========================== */
+
+function Field({ label, value }) {
+  return (
+    <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+      <div className="text-xs uppercase tracking-wide text-slate-300">{label}</div>
+      <div className="mt-1 font-medium text-slate-100">{value}</div>
+    </div>
+  );
+}
+
+function BankDonationCard({ bankLogo, bankName, holder, accountType, accountNumber, note }) {
+  const [copied, setCopied] = React.useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(accountNumber);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1600);
+    } catch {
+      // Silencioso si el navegador bloquea el portapapeles
+    }
+  };
+
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
+      {/* Encabezado: logo + banco + nota */}
+      <div className="mb-6 flex items-center gap-4">
+        <img
+          src={bankLogo}
+          alt={bankName}
+          className="h-12 w-12 rounded-md bg-white/90 p-1 object-contain"
+        />
+        <div>
+          <div className="text-lg font-semibold text-slate-100">{bankName}</div>
+          {note && <p className="text-sm text-slate-300">{note}</p>}
+        </div>
+      </div>
+
+      {/* Datos */}
+      <div className="grid gap-4 sm:grid-cols-3">
+        <Field label="Titular de la Cuenta - Líder Técnico" value={holder} />
+        <Field label="Tipo de cuenta" value={accountType} />
+        <div className="flex items-center justify-between rounded-xl border border-white/10 bg-emerald-500/10 p-4">
+          <div>
+            <div className="text-xs uppercase tracking-wide text-emerald-300">Número de cuenta</div>
+            <div className="font-mono text-lg text-slate-100">{accountNumber}</div>
+          </div>
+          <button
+            onClick={handleCopy}
+            className="inline-flex items-center gap-2 rounded-lg border border-emerald-400/40 px-3 py-2 text-emerald-200 hover:bg-emerald-400/10"
+            aria-label="Copiar número de cuenta"
+          >
+            {copied ? <Check className="h-5 w-5" /> : <Copy className="h-5 w-5" />}
+            <span className="text-sm">{copied ? "Copiado" : "Copiar"}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 /* ===== Navbar ===== */
 function Navbar() {
@@ -153,7 +218,7 @@ function CardKicker({ icon, title, desc }) {
   );
 }
 
-/* ===== Galería (EDITA estos nombres según tus archivos) ===== */
+/* ===== Galería ===== */
 function Galeria() {
   const images = [
     "/images/gallery/img1.jpeg",
@@ -188,7 +253,7 @@ function Futuro() {
   return (
     <section id="futuro" className="mx-auto max-w-6xl px-4 py-16 text-slate-50">
       <motion.h2 {...fadeUp} className="text-3xl font-extrabold tracking-tight sm:text-4xl">A futuro</motion.h2>
-      <motion.div {...fadeUp} className="mt-4 grid gap-6 md:grid-cols-2">
+      <motion.div {...fadeUp} className="mt-4 grid gap-6 md:grid-cols-2 items-start">
         <div className="space-y-4 leading-relaxed text-slate-200">
           <p>Para la temporada 2025 presentaremos un vehículo renovado y optimizado, incorporando innovaciones en materiales, aerodinámica y tecnologías propias.</p>
           <p>Además, estamos proyectando el desarrollo de un prototipo urbano con hidrógeno verde, reafirmando nuestro compromiso con la movilidad sostenible.</p>
@@ -217,11 +282,15 @@ function Patrocinio() {
     { title: "Responsabilidad social empresarial (RSE)", desc: "Refuerza el compromiso de tu organización con la educación, el medio ambiente y la comunidad." },
   ];
   const formas = ["Patrocinio financiero", "Donación de materiales o equipos", "Asesoría técnica o empresarial", "Difusión y promoción del proyecto"];
+
   return (
     <section id="patrocinio" className="mx-auto max-w-6xl px-4 py-16 text-slate-50">
       <motion.h2 {...fadeUp} className="text-3xl font-extrabold tracking-tight sm:text-4xl">¡Tú también puedes ser parte!</motion.h2>
-      <motion.p {...fadeUp} className="mt-2 max-w-3xl text-slate-300">En Taq Balam buscamos patrocinadores visionarios que quieran impulsar la innovación, la sostenibilidad y el talento guatemalteco.</motion.p>
-      <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-6 grid gap-6 md:grid-cols-2"> 
+      <motion.p {...fadeUp} className="mt-2 max-w-3xl text-slate-300">
+        En Taq Balam buscamos patrocinadores visionarios que quieran impulsar la innovación, la sostenibilidad y el talento guatemalteco.
+      </motion.p>
+
+      <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="mt-6 grid gap-6 md:grid-cols-2">
         <motion.div variants={child} className="rounded-2xl border border-white/10 bg-white/5 p-6">
           <div className="mb-3 flex items-center gap-2 text-emerald-300"><Handshake /> <span className="font-semibold">¿Por qué patrocinar a Taq Balam?</span></div>
           <ul className="space-y-3 text-slate-200">
@@ -233,6 +302,7 @@ function Patrocinio() {
             ))}
           </ul>
         </motion.div>
+
         <motion.div variants={child} className="rounded-2xl border border-white/10 bg-white/5 p-6">
           <div className="mb-3 font-semibold text-emerald-300">Formas de unirte</div>
           <ul className="grid gap-3">
@@ -248,6 +318,28 @@ function Patrocinio() {
           </a>
         </motion.div>
       </motion.div>
+
+      <motion.div {...fadeUp} className="mt-8">
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
+
+          <h3 className="mb-4 text-2xl font-bold text-emerald-300">
+            Donación por transferencia bancaria
+          </h3>
+
+          <p className="mb-5 max-w-3xl text-slate-200">
+            Si deseas apoyar nuestra misión de innovación sostenible, puedes realizar una donación por transferencia. Tu aporte impulsa a estudiantes guatemaltecos a construir tecnología con impacto social.
+          </p>
+
+          <BankDonationCard
+            bankLogo="/images/gallery/bi.png"     
+            bankName="Banco Industrial"
+            holder="Emanuel Alfredo Sandoval Yax"
+            accountType="Cuenta Monetaria"
+            accountNumber="0170156335"
+            note="Gracias por confiar en nuestro trabajo. Cada contribución nos acerca a la próxima meta."
+          />
+        </div>
+      </motion.div>
     </section>
   );
 }
@@ -257,12 +349,10 @@ function Contacto() {
   const iconClass = "h-7 w-7";
   const social = [
     { href: "https://www.instagram.com/taqbalam?igsh=ZmRoNjllMHNoeWIw&utm_source=qr", label: "Instagram", icon: <Instagram className={iconClass}/> },
-   /* { href: "#", label: "Facebook",  icon: <Facebook  className={iconClass} /> }, */
+    /* { href: "#", label: "Facebook",  icon: <Facebook  className={iconClass} /> }, */
     { href: "mailto:taqbalam1@gmail.com?subject=Inter%C3%A9s%20en%20patrocinio%20Taq%20Balam", label: "Correo", icon: <Mail className={iconClass} /> },
     { href: "https://wa.me/50239046455", label: "WhatsApp", icon: <MessageCircle className={iconClass} /> },
     { href: "tel:+50239046455", label: "Teléfono", icon: <PhoneCall className={iconClass} /> },
-
-    
   ];
   return (
     <section id="contacto" className="mx-auto max-w-6xl px-4 py-16 text-slate-50">
